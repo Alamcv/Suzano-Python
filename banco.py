@@ -28,9 +28,9 @@ while True:
         if valor > 0:
             
             saldo = saldo + valor
-            extrato = extrato + f"Operação Depósito: R$ {valor} \n"
+            extrato = extrato + f"Operação Depósito: R$ {valor:.2f} \n"
 
-            print(f"Saldo atual da conta é de R$ {saldo}")
+            print(f"Saldo atual da conta é de R$ {saldo:.2f}")
         else:
             continue
     
@@ -49,13 +49,13 @@ while True:
                     
                     saldo = saldo - valor
                     numero_saques = numero_saques + 1
-                    extrato = extrato + f"Operação Saque: R${valor} \n"
+                    extrato = extrato + f"Operação Saque: R${valor:.2f} \n"
 
                     print(f"Saldo atual da conta é de R$ {saldo}")
                 else:
                     continue
             else:
-                print(f"Valor de saque R$ {valor} ultrapassa o valor de saldo R$ {saldo}. \n Não é possível realizar o saque.")
+                print(f"Valor de saque R$ {valor:.2f} ultrapassa o valor de saldo R$ {saldo:.2f}. \n Não é possível realizar o saque.")
                 
         else:
             print("Quantidade máxima de saques diários ultrapassado. Tente novamente amanhã.")
@@ -63,7 +63,10 @@ while True:
 
     elif opcao == 'e':
         print('Opção Selecionada: Extrato. \n')
-        print(extrato)
+        print("*************************EXTRATO*************************")
+        print("Não há histórico de movimentações nessa conta." if not extrato else extrato)
+        print(f"Saldo: R$ {saldo:.2f}")
+        print("*********************************************************")
     
     elif opcao == 'q':
         break
