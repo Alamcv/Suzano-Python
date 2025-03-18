@@ -16,9 +16,6 @@ def menu():
 
     return input(textwrap.dedent(menu))
 
-def cadastrar_conta():
-    pass
-
 def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
 
     if limite_saques <= numero_saques:
@@ -45,14 +42,27 @@ def depositar(saldo ,valor, extrato):
 
     return saldo, extrato
 
-def cadastrar_usuario():
-    pass
-
 def visualizar_extrato(saldo, /,*, extrato):
+    print(f"|-------------------------EXTRATO-------------------------|")
+    if not extrato: 
+        print(f"|    Não existem registros de movimentações realizadas    |")
+    else:
+        registros = extrato.splitline()
+        for registro in registros:
+            print(f"|    {registro}    |")
+    print(f"| Saldo atual: R$ {saldo:.2f}                             |")
+    print(f"|-------------------------EXTRATO-------------------------|")
+
+def cadastrar_usuario(nome, dt_nascimento, cpf, endereco):
+    cpf = input(f"Digite o CPF do novo correntista. (APENAS NÚMEROS)")
+    cpf = ''
+
+def listar_contas(cpf):
     pass
 
-def listar_contas():
+def cadastrar_conta():
     pass
+
 
 def main():
 
