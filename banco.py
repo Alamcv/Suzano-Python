@@ -53,11 +53,23 @@ def visualizar_extrato(saldo, /,*, extrato):
     print(f"| Saldo atual: R$ {saldo:.2f}                             |")
     print(f"|-------------------------EXTRATO-------------------------|")
 
-def cadastrar_usuario(nome, dt_nascimento, cpf, endereco):
+def cadastrar_usuario(usuarios):
     cpf = input(f"Digite o CPF do novo correntista. (APENAS NÚMEROS)")
     cpf = ''.join(char for char in cpf if char.isalnum())
 
-    usuario = buscar_usuario(cpf)
+    usuario = buscar_usuario(cpf, usuarios)
+
+    if usuario:
+        print(f"Usuário já cadastrado.")
+        return
+    
+    nome = input("Informe o nome completo: ")
+    dt_nascimento = input("Informe a data de nascimento (dd-mm-aaaa): ")
+    endereco = input("Informe o endereço completo (logradouro, número - barrio - cidade/uf): ")
+
+    usuarios.append({"nome": nome, "data_nascimento": dt_nascimento, "cpf": cpf, "endereco": endereco})
+
+    print("Usuário criado com suscesso")
 
 def buscar_usuario(cpf, usuarios):
 
