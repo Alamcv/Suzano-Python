@@ -54,6 +54,7 @@ def visualizar_extrato(saldo, /,*, extrato):
     print(f"|-------------------------EXTRATO-------------------------|")
 
 def cadastrar_usuario(usuarios):
+
     cpf = input(f"Digite o CPF do novo correntista. (APENAS NÚMEROS)")
     cpf = ''.join(char for char in cpf if char.isalnum())
 
@@ -80,12 +81,21 @@ def buscar_usuario(cpf, usuarios):
     else:
         return None
 
+def cadastrar_conta(agencia, numero_conta, usuarios):
+    
+    cpf = input("Digite o CPF do usuário: ")
+    usuario = buscar_usuario(cpf, usuarios)
 
-def listar_contas(cpf):
-    pass
+    if usuario:
+        print("------- Conta criada com sucesso -------")
+        return {"agencia": agencia, "numero_conta": numero_conta, "usuario": usuario}
+    
+    print("Usuário não encontrado. Antes de cadastrar a conta, realize o cadastro do usuário.")
+    
 
-def cadastrar_conta():
-    pass
+def listar_contas(contas):
+    for conta in contas:
+        print(conta)
 
 
 def main():
